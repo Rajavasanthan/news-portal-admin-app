@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
 
@@ -20,9 +21,18 @@ const Login = () => {
       }
       return errors;
     },
-    onSubmit: (values) => {
-      console.log(values);
-    },
+    onSubmit: async (values) => {
+      try {
+        await axios.post("API Link", values, {
+          withCredentials: true, // Include credentials
+          headers: { "Content-Type": "application/json" },
+        });
+        alert("Data Posted");
+      } catch (error) {
+        console.error(error);
+        alert("Something went wrong");
+      }
+    },    
   });
 
   return (
