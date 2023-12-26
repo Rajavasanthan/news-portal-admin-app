@@ -18,7 +18,6 @@ const Login = () => {
       if (!values.password.trim()) {
         errors.password = "Please enter the Password";
       }
-      console.log(errors)
       return errors;
     },
     onSubmit: (values) => {
