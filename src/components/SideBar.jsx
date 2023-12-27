@@ -5,7 +5,7 @@ const SideBar = () => {
   return (
     <div>
       <ul
-        className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        className="navbar-nav bg-reddish sidebar sidebar-dark accordion"
         id="accordionSidebar"
       >
         {/* Sidebar - Brand */}

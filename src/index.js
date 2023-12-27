@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./assets/sb-admin-2.min.css";
+import { UserProvider } from './context/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <UserProvider>
     <App />
-  </React.StrictMode>
+  </UserProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

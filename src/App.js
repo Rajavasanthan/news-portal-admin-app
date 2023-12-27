@@ -14,11 +14,8 @@ import Topbar from "./components/Topbar";
 import ViewNews from "./components/ViewNews";
 import ProtectedRouter from "./components/ProtectedRouter";
 function App() {
-  return (
-    <>
-      <BrowserRouter>
- 
-           
+  return (  
+      <BrowserRouter>           
               <Routes>
                 <Route path="/" element={<Login />}></Route>
                 <Route element={<ProtectedRouter />}>
@@ -45,7 +42,6 @@ function App() {
                 </Route>
               </Routes>
       </BrowserRouter>
-    </>
   );
 }
 
