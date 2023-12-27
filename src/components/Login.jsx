@@ -27,7 +27,7 @@ const Login = () => {
           withCredentials: true, // Include credentials
           headers: { "Content-Type": "application/json" },
         });
-        alert("Data Posted");
+        alert("Login successfull");
       } catch (error) {
         console.error(error);
         alert("Something went wrong");
