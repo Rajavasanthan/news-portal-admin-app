@@ -5,20 +5,23 @@ import React from "react";
 const Login = () => {
   const formik = useFormik({
     initialValues: {
-      username: "",
+      email: "",
       password: "",
     },
     validate: (values) => {
       const errors = {};
-      if (!values.username.trim()) {
-        errors.username = "Please enter the Username";
-      } else if (values.username.length < 3 || values.username.length > 12) {
-        errors.username = "Please enter a value between 3 and 12 characters";
+      if (!values.email) {
+        errors.email = "Please enter your email";
+      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = "Invalid email address"; // checks the valid email address
       }
-
+      
       if (!values.password.trim()) {
         errors.password = "Please enter the Password";
+      } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/.test(values.password)) {
+        errors.password = "Please enter a strong password"; // Corrected to "errors.password" and updated error message
       }
+      
       return errors;
     },
     onSubmit: async (values) => {
@@ -27,7 +30,7 @@ const Login = () => {
           withCredentials: true, // Include credentials
           headers: { "Content-Type": "application/json" },
         });
-        alert("Login successfull");
+        alert("Login successful");
       } catch (error) {
         console.error(error);
         alert("Something went wrong");
@@ -43,21 +46,21 @@ const Login = () => {
             <h3 className="text-center"><u>Admin Login</u></h3>
             <form onSubmit={formik.handleSubmit}>
               <div className="mb-3">
-                <label className="form-label" htmlFor="username">
+                <label className="form-label" htmlFor="email">
                   {" "}
-                  Username:
+                  Email:
                 </label>
                 <input
-                  type="text"
-                  id="username"
-                  name="username"
+                  type="email"
+                  id="email"
+                  name="email"
                   className="form-control "
                   autoComplete="true"
-                  value={formik.values.username}
+                  value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <span className="text-danger">{formik.errors.username}</span>
+                <span className="text-danger">{formik.errors.email}</span>
               </div>
               <br />
               <div className="mb-3">
