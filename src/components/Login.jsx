@@ -47,12 +47,12 @@ const Login = () => {
       const { user } = await signInWithGoogle();
       console.log(user.accessToken);
       const loginResp = await axios.post(
-        `${config.api}/users/sign-in-with-firebase`,
+        `${config.api}/admin/login-firebase`,
         { token: user.accessToken }
       );
       localStorage.setItem("token", loginResp.data.token);
-      localStorage.setItem("user", JSON.stringify(loginResp.data.user));
-      setUser(loginResp.data.user)
+      localStorage.setItem("admin", JSON.stringify(loginResp.data.admin));
+      setUser(loginResp.data.admin)
       navigate("/create-news");
     } catch (error) {
       console.error("Error during login:", error);

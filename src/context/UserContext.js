@@ -3,7 +3,8 @@ import React, { createContext, useState } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const userDetail = localStorage.getItem("user");
+  const userDetail = localStorage.getItem("admin");
+  console.log(userDetail);
   const [user, setUser] = useState(
     userDetail ? JSON.parse(userDetail) : null
   );
